@@ -20,6 +20,28 @@ namespace ShapeLibrary
             _greeen = green;
             _blue = blue;
         }
+        public static Colour operator +(Colour a, Colour b)
+        {
+            return new Colour(
+                a.Red + b.Red,
+                a.Green + b.Green,
+                a.Blue + b.Blue);
+        }
+        public static Colour operator -(Colour a, Colour b)
+        {
+            return new Colour(
+                a.Red - b.Red,
+                a.Green - b.Green,
+                a.Blue - b.Blue);
+        }
+        public static Colour operator *(int scale, Colour a)
+        {
+            return new Colour(
+                scale * a.Red,
+                scale * a.Green,
+                scale * a.Blue
+                );
+        }
 
     }
 }
