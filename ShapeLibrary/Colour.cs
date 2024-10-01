@@ -22,25 +22,38 @@ namespace ShapeLibrary
         }
         public static Colour operator +(Colour a, Colour b)
         {
-            return new Colour(
-                a.Red + b.Red,
-                a.Green + b.Green,
-                a.Blue + b.Blue);
+
+            int red = a.Red + b.Red;
+            int green = a.Green + b.Green;
+            int blue = a.Blue + b.Blue;
+
+            if (red > 255) { red = 255; }
+            if (green > 255) { green = 255; }
+            if (blue > 255) { blue = 255; }
+            return new Colour(red, green, blue);
         }
         public static Colour operator -(Colour a, Colour b)
         {
-            return new Colour(
-                a.Red - b.Red,
-                a.Green - b.Green,
-                a.Blue - b.Blue);
+            int red = a.Red - b.Red;
+            int green = a.Green - b.Green;
+            int blue = a.Blue - b.Blue;
+            if (red < 0) { red = 0; }
+            if (green < 0) { green = 0; }
+            if (blue < 0) { blue = 0; }
+            return new Colour(red, green, blue);
         }
-        public static Colour operator *(int scale, Colour a)
+        public static Colour operator *(int multiplier, Colour a)
         {
-            return new Colour(
-                scale * a.Red,
-                scale * a.Green,
-                scale * a.Blue
-                );
+            int red = multiplier * a.Red;
+            int green = multiplier * a.Green;
+            int blue = multiplier * a.Blue;
+            if (red > 255) { red = 255; }
+            if (green > 255) { green = 255; }
+            if (blue > 255) { blue = 255; }
+            if (red < 0) { red = 0; }
+            if (green < 0) { green = 0; }
+            if (blue < 0) { blue = 0; }
+            return new Colour(red, green, blue);
         }
 
     }
