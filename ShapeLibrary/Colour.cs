@@ -55,6 +55,13 @@ namespace ShapeLibrary
             if (blue < 0) { blue = 0; }
             return new Colour(red, green, blue);
         }
+        public static bool operator ==(Colour a, Colour b)
+        {
+            return (a.Red == b.Red) && (a.Green == b.Green) && (a.Blue == b.Blue);
+        }
+        public static bool operator !=(Colour a, Colour b) {
+            return (a.Red != b.Red) || (a.Green != b.Green) || (a.Blue != b.Blue);
+        }
 
     }
 }
