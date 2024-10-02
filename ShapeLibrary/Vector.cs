@@ -21,7 +21,14 @@ namespace ShapeLibrary
             X = v.X;
             Y = v.Y;
         }
-
+        public static double magnitude(Vector v)
+        {
+            return Math.Sqrt((v.X * v.X) + (v.Y * v.Y));
+        }
+        public static Vector normalize(Vector v)
+        {
+            return new Vector((float)(v.X / magnitude(v)), (float)(v.Y / magnitude(v)));
+        }
         public static Vector operator +(Vector a, Vector b)
         {
             return new Vector(a.X + b.X, a.Y + b.Y);
