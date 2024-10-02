@@ -62,6 +62,10 @@ namespace ShapeLibrary
         public static bool operator !=(Colour a, Colour b) {
             return (a.Red != b.Red) || (a.Green != b.Green) || (a.Blue != b.Blue);
         }
+        public override string ToString()
+        {
+            return ("Red: " + Red + ", Green: " + Green + ", Blue: " + Blue);
+        }
 
     }
 }
