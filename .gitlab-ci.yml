@@ -9,7 +9,7 @@ build-debug:
   stage: build
   script:
   - cd Paintdrops
-  - dotnet build --project PaintDrops.csproj -c Debug
+  - dotnet build PaintDrops.csproj -c Debug
 
 build-release:
   stage: build
