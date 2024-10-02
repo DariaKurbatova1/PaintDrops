@@ -14,7 +14,8 @@ build-release:
   stage: build
   script:
    - dotnet build -c Release
-   - dotnet publish -c Release -r win-x64 --output ./publish PaintDrops.sln
+   - dotnet publish -c Release -r win-x64 --output ./publish ./PainDropSimulation/PainDropSimulation.csproj
+
    - tar -czvf Game.tar.gz ./publish
   artifacts:
     paths:
