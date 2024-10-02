@@ -6,6 +6,23 @@ namespace ShapeLibraryTest;
 public class ColourTest
 {
     [TestMethod]
+    public void invalidConstructorParamTooBig()
+    {
+        try
+        {
+            var colour1 = new Colour(256, 100, 100);
+            Assert.Fail();
+        }
+        catch (Exception e){}
+        try
+        {
+            var colour1 = new Colour(-5, 100, 100);
+            Assert.Fail();
+        }
+        catch (Exception e) { }
+    }
+
+    [TestMethod]
     public void AddColourTest()
     {
         var colour1 = new Colour(100, 100, 100);

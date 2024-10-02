@@ -16,6 +16,14 @@ namespace ShapeLibrary
         public int Blue { get { return _blue; } }
         public Colour(int red, int green, int blue)
         {
+            if (red > 255 || green > 255 || blue > 255)
+            {
+                throw new ArgumentException("Colour value must be below or equal 255");
+            }
+            if (red > 255 || green > 255 || blue > 255)
+            {
+                throw new ArgumentException("Colour value must be above or equal to 0");
+            }
             _red = red;
             _greeen = green;
             _blue = blue;
