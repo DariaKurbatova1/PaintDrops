@@ -54,6 +54,10 @@ namespace ShapeLibrary
             if (a.X != b.X || a.Y != b.Y) {  return true; }
             return false;
         }
+        public override String ToString()
+        {
+            return "("+X+", "+Y+")";
+        }
 
 
 
