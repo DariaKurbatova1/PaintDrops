@@ -8,13 +8,11 @@ stages:
 build-debug:
   stage: build
   script:
-  - cd Paintdrops
-  - dotnet build PaintDrops.csproj -c Debug
+  - dotnet build -c Debug
 
 build-release:
   stage: build
   script:
-   - cd Paintdrops
    - dotnet build -c Release
    - dotnet publish -c Release -r win-x64 --output ./publish ./PainDropSimulation/PainDropSimulation.csproj
    - tar -czvf Game.tar.gz ./publish
