@@ -20,10 +20,16 @@ namespace ShapeLibrary
             X = v.X;
             Y = v.Y;
         }
+        /// <summary>
+        /// Returns a double representing the magnitude of the vector
+        /// </summary>
         public static double magnitude(Vector v)
         {
             return Math.Sqrt((v.X * v.X) + (v.Y * v.Y));
         }
+        /// <summary>
+        /// Returns the normalized version of the vector
+        /// </summary>
         public static Vector normalize(Vector v)
         {
             return new Vector((float)(v.X / magnitude(v)), (float)(v.Y / magnitude(v)));
