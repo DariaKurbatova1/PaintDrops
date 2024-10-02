@@ -41,7 +41,7 @@ namespace ShapeLibrary
         {
             return new Vector(scalar *  a.X, scalar * a.Y);
         }
-        public static Vector operator /(float scalar, Vector a)
+        public static Vector operator /(Vector a, float scalar)
         {
             return new Vector(a.X / scalar, a.Y / scalar); 
         }
