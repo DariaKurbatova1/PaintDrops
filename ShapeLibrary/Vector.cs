@@ -8,7 +8,6 @@ namespace ShapeLibrary
 {
     public struct Vector
     {
-
         public float X { get; }
         public float Y { get; }
         public Vector(float x, float y)
