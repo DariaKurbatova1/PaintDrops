@@ -12,6 +12,7 @@ public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+    private ShapesRenderer _shapesRenderer;
     private Screen _screen;
     private CustomMouse _customMouse;
     private MouseState _previousMouseState;
@@ -43,6 +44,7 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
+        _shapesRenderer = new ShapesRenderer(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
     }
@@ -100,11 +102,25 @@ public class Game1 : Game
         _screen.Set();
         //GraphicsDevice.Clear(_color);
         _spriteBatch.Begin();
+        _shapesRenderer.Begin();
+
         //draw whatever
+        foreach (IShape shape in _shapeList)
+        {
+            //??
+            //_spriteBatch.Draw(shape);
+            _shapesRenderer.DrawShape(shape);
+            //r.Draw(renderTarget2D, shape);
+
+        }
+
         _spriteBatch.End();
+        _shapesRenderer.End();
         _screen.UnSet();
 
         SpritesRenderer renderer = new SpritesRenderer(GraphicsDevice);
+        //??
+        ShapesRenderer r = new ShapesRenderer(GraphicsDevice);
         _screen.Present(renderer);
 
 
