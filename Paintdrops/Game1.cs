@@ -11,7 +11,7 @@ namespace Paintdrops;
 public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
-    private SpriteBatch _spriteBatch;
+    //private SpriteBatch _spriteBatch;
     private ShapesRenderer _shapesRenderer;
     private Screen _screen;
     private CustomMouse _customMouse;
@@ -43,7 +43,7 @@ public class Game1 : Game
 
     protected override void LoadContent()
     {
-        _spriteBatch = new SpriteBatch(GraphicsDevice);
+        //_spriteBatch = new SpriteBatch(GraphicsDevice);
         _shapesRenderer = new ShapesRenderer(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
@@ -62,7 +62,8 @@ public class Game1 : Game
             if (_customMouse.GetScreenPosition(_screen).HasValue)
             {
                 Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
-                ShapeLibrary.IRectangle r = ShapeFactory.CreateRectangle();
+                Colour colour = new Colour(120, 120, 120);
+                ShapeLibrary.Rectangle r = new ShapeLibrary.Rectangle(clickPosition.X, clickPosition.Y, 4, 3, colour);
                 _shapeList.Add(r);
 
             }
@@ -74,7 +75,8 @@ public class Game1 : Game
             if (_customMouse.GetScreenPosition(_screen).HasValue)
             {
                 Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
-                ShapeLibrary.ICircle c = ShapeFactory.CreateCircle();
+                Colour colour = new Colour(120, 120, 120);
+                ShapeLibrary.ICircle c = new Circle(clickPosition.X, clickPosition.Y, 40, colour);
                 _shapeList.Add(c);
 
             }
@@ -85,7 +87,7 @@ public class Game1 : Game
             //check if click happened within bounds
             if (_customMouse.GetScreenPosition(_screen).HasValue)
             {
-                ShapeLibrary.IRectangle r = ShapeFactory.CreateRectangle();
+                _shapeList.Clear();
 
             }
         }
@@ -96,12 +98,12 @@ public class Game1 : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        //GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        RenderTarget2D renderTarget2D = new RenderTarget2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+        //RenderTarget2D renderTarget2D = new RenderTarget2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
         _screen.Set();
-        //GraphicsDevice.Clear(_color);
-        _spriteBatch.Begin();
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+        //_spriteBatch.Begin();
         _shapesRenderer.Begin();
 
         //draw whatever
@@ -114,14 +116,13 @@ public class Game1 : Game
 
         }
 
-        _spriteBatch.End();
+        //_spriteBatch.End();
         _shapesRenderer.End();
         _screen.UnSet();
 
         SpritesRenderer renderer = new SpritesRenderer(GraphicsDevice);
-        //??
-        ShapesRenderer r = new ShapesRenderer(GraphicsDevice);
         _screen.Present(renderer);
+
 
 
 
