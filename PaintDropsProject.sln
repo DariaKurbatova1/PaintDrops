@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PainDropSimulation", "PainDropSimulation\PainDropSimulation.csproj", "{B2122535-B3F5-4C6E-AB8F-697A3A9CD702}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paintdrops", "Paintdrops\PaintDrop.csproj", "{B2122535-B3F5-4C6E-AB8F-697A3A9CD702}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrawingLibrary", "DrawingLibrary\DrawingLibrary.csproj", "{6FB1E822-1960-421B-8A6E-4231B25B9AEF}"
 EndProject
