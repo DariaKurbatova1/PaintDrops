@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ShapeLibrary;
+using System.Collections.Generic;
 namespace Paintdrops;
 
 public class Game1 : Game
@@ -15,7 +16,7 @@ public class Game1 : Game
     private CustomMouse _customMouse;
     private MouseState _previousMouseState;
     private MouseState _currentMouseState;
-
+    private List<IShape> _shapeList;
 
 
 
@@ -29,7 +30,7 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-
+        _shapeList = new List<IShape>();
         _previousMouseState = Mouse.GetState();
         _currentMouseState = Mouse.GetState();
         RenderTarget2D renderTarget = new RenderTarget2D(GraphicsDevice, 640, 480);
@@ -60,6 +61,7 @@ public class Game1 : Game
             {
                 Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
                 ShapeLibrary.IRectangle r = ShapeFactory.CreateRectangle();
+                _shapeList.Add(r);
 
             }
         }
@@ -70,7 +72,8 @@ public class Game1 : Game
             if (_customMouse.GetScreenPosition(_screen).HasValue)
             {
                 Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
-                ShapeLibrary.ICircle r = ShapeFactory.CreateCircle();
+                ShapeLibrary.ICircle c = ShapeFactory.CreateCircle();
+                _shapeList.Add(c);
 
             }
         }
