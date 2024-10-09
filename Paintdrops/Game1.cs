@@ -63,7 +63,7 @@ public class Game1 : Game
             {
                 Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
                 Colour colour = new Colour(120, 120, 120);
-                ShapeLibrary.Rectangle r = new ShapeLibrary.Rectangle(clickPosition.X, clickPosition.Y, 4, 3, colour);
+                ShapeLibrary.Rectangle r = new ShapeLibrary.Rectangle(clickPosition.X, clickPosition.Y, 40, 30, colour);
                 _shapeList.Add(r);
 
             }
@@ -76,8 +76,8 @@ public class Game1 : Game
             {
                 Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
                 Colour colour = new Colour(120, 120, 120);
-                ShapeLibrary.ICircle c = new Circle(clickPosition.X, clickPosition.Y, 40, colour);
-                _shapeList.Add(c);
+                Circle r = new Circle(clickPosition.X, clickPosition.Y, 40, colour);
+                _shapeList.Add(r);
 
             }
         }

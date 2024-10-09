@@ -31,7 +31,7 @@ namespace ShapeLibrary
         {
             const float PI = (float)Math.PI;
             //preset number of points
-            int n = 6;
+            int n = 100;
 
             //calculate theta i
             
