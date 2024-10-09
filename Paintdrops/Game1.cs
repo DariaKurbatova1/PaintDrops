@@ -4,7 +4,7 @@ using DrawingLibrary.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using ShapeLibrary;
 namespace Paintdrops;
 
 public class Game1 : Game
@@ -52,12 +52,36 @@ public class Game1 : Game
             Exit();
 
         _customMouse.Update();
+        //add rectangle
+        if (_customMouse.IsRightButtonClicked())
+        {
+            //check if click happened within bounds
+            if (_customMouse.GetScreenPosition(_screen).HasValue)
+            {
+                Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
+                ShapeLibrary.IRectangle r = ShapeFactory.CreateRectangle();
+
+            }
+        }
+        //add circle
         if (_customMouse.IsLeftButtonClicked())
         {
             //check if click happened within bounds
             if (_customMouse.GetScreenPosition(_screen).HasValue)
             {
-                
+                Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
+                ShapeLibrary.ICircle r = ShapeFactory.CreateCircle();
+
+            }
+        }
+        //clear shapes
+        if (_customMouse.IsMiddleButtonClicked())
+        {
+            //check if click happened within bounds
+            if (_customMouse.GetScreenPosition(_screen).HasValue)
+            {
+                ShapeLibrary.IRectangle r = ShapeFactory.CreateRectangle();
+
             }
         }
 
