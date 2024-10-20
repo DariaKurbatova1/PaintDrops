@@ -10,18 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DrawingLibrary.Graphics
-    
+
 {
     public class Screen : IScreen
     {
 
-        private float _screenAspectRatio = (640f/480f);
+        private float _screenAspectRatio = (640f / 480f);
         private float _windowAscpectRatio;
         private PresentationParameters _presentationParameters;
         private float _sx;
         private float _sy;
 
-        public float sx {  get; private set; }
+        public float sx { get; private set; }
         public float sy { get; private set; }
 
         private RenderTarget2D _renderTarget;
@@ -45,7 +45,7 @@ namespace DrawingLibrary.Graphics
             float windowWidth = _graphicsDevice.Viewport.Width;
             //get window ration
             _windowAscpectRatio = (windowWidth / windowHeight);
-            
+
             float screenWidth;
             float screenHeight;
 
@@ -63,7 +63,7 @@ namespace DrawingLibrary.Graphics
                 screenWidth = windowWidth;
                 screenHeight = screenWidth / _screenAspectRatio;
                 _sx = 0;
-                _sy = ( windowHeight - screenHeight) / 2;
+                _sy = (windowHeight - screenHeight) / 2;
             }
             Point size = new Point((int)(screenWidth), (int)(screenHeight));
             Point location = new Point((int)(_sx), (int)(_sy));
