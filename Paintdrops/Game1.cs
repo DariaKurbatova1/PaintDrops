@@ -43,10 +43,8 @@ public class Game1 : Game
 
     protected override void LoadContent()
     {
-        //_spriteBatch = new SpriteBatch(GraphicsDevice);
         _shapesRenderer = new ShapesRenderer(GraphicsDevice);
 
-        // TODO: use this.Content to load your game content here
     }
 
     protected override void Update(GameTime gameTime)
@@ -75,7 +73,7 @@ public class Game1 : Game
             if (_customMouse.GetScreenPosition(_screen).HasValue)
             {
                 Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
-                Colour colour = new Colour(120, 120, 120);
+                Colour colour = new Colour(240, 132, 207);
                 Circle r = new Circle(clickPosition.X, clickPosition.Y, 40, colour);
                 _shapeList.Add(r);
 
@@ -98,25 +96,17 @@ public class Game1 : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        //GraphicsDevice.Clear(Color.CornflowerBlue);
-
-        //RenderTarget2D renderTarget2D = new RenderTarget2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+        
         _screen.Set();
         GraphicsDevice.Clear(Color.CornflowerBlue);
-        //_spriteBatch.Begin();
         _shapesRenderer.Begin();
 
-        //draw whatever
         foreach (IShape shape in _shapeList)
         {
-            //??
-            //_spriteBatch.Draw(shape);
             _shapesRenderer.DrawShape(shape);
-            //r.Draw(renderTarget2D, shape);
 
         }
 
-        //_spriteBatch.End();
         _shapesRenderer.End();
         _screen.UnSet();
 

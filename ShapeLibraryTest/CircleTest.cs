@@ -29,11 +29,9 @@ namespace ShapeLibraryTest
             Circle circle = new Circle(0, 0, 10, colour);
             var expectedVertices = new Vector[100];
             const float PI = (float)Math.PI;
-
-            // Calculate expected vertices
             for (int i = 0; i < 100; i++)
             {
-                float theta_i = (2 * PI / 100) * i;
+                float theta_i = (2 * PI / 100) * (i-1);
                 float x_i = 10 * (float)Math.Cos(theta_i);
                 float y_i = 10 * (float)Math.Sin(theta_i);
                 expectedVertices[i] = new Vector(x_i, y_i);
