@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace PaintDropSimulation
 {
-    internal class Surface : ISurface
+    public class Surface : ISurface
     {
         public Surface(int width, int height) {
             Width = width;
             Height = height;
+            Drops = new List<IPaintDrop>();
         }
         public int Width { get; }
 
         public int Height { get; }
 
-        public List<IPaintDrop> Drops { get; set; }
+        public List<IPaintDrop> Drops { get; }
 
         public void AddPaintDrop(IPaintDrop drop)
         {
-            List<IPaintDrop> marbled = new List<IPaintDrop>();
+            //List<IPaintDrop> marbled = new List<IPaintDrop>();
+            Drops.Add(drop);
             foreach (PaintDrop item in Drops)
             {
                 item.Marble(drop);
-                marbled.Add(item);
             }
-            Drops = marbled;
         }
     }
 }

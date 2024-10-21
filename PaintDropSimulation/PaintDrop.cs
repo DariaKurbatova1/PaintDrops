@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PaintDropSimulation
 {
-    internal class PaintDrop : IPaintDrop
+    public class PaintDrop : IPaintDrop
     {
         public ICircle Circle { get; }
         public PaintDrop(ICircle circle)
@@ -24,7 +24,7 @@ namespace PaintDropSimulation
             int index = 0;
             foreach (var vertice in Circle.Vertices)
             {
-                var squareRoot = Math.Sqrt((1 + ((otherRadius * otherRadius) / Vector.magnitude(vertice - otherCenter));
+                var squareRoot = Math.Sqrt(1 + (otherRadius * otherRadius) / (Vector.magnitude(vertice - otherCenter)));
                 var newVertice = otherCenter + (float)squareRoot * (vertice - otherCenter);
                 newVertices[index] = newVertice;
                 index++;
