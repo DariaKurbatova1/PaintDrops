@@ -45,7 +45,7 @@ namespace ShapeLibrary
             {
                 theta_i = (2 * PI / n)*(i - 1);
                 x_i = _center.X + (_radius * (float)Math.Cos((double)theta_i));
-                y_i = _center.X + (_radius * (float)Math.Sin((double)theta_i));
+                y_i = _center.Y + (_radius * (float)Math.Sin((double)theta_i));
                 vertices[i] = new Vector(x_i, y_i);
             }
             return vertices;
