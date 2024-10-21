@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ShapeLibrary;
 using System.Collections.Generic;
+using PaintDropSimulation;
 namespace Paintdrops;
 
 public class Game1 : Game
