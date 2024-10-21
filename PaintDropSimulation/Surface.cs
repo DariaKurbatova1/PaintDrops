@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShapeLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,25 @@ namespace PaintDropSimulation
 {
     internal class Surface : ISurface
     {
-        public int Width => throw new NotImplementedException();
+        public Surface(int width, int height) {
+            Width = width;
+            Height = height;
+        }
+        public int Width { get; }
 
-        public int Height => throw new NotImplementedException();
+        public int Height { get; }
 
-        public List<IPaintDrop> Drops => throw new NotImplementedException();
+        public List<IPaintDrop> Drops { get; set; }
 
         public void AddPaintDrop(IPaintDrop drop)
         {
-            throw new NotImplementedException();
+            List<IPaintDrop> marbled = new List<IPaintDrop>();
+            foreach (PaintDrop item in Drops)
+            {
+                item.Marble(drop);
+                marbled.Add(item);
+            }
+            Drops = marbled;
         }
     }
 }
