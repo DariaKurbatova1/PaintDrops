@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using ShapeLibrary;
 using System.Collections.Generic;
 using PaintDropSimulation;
+using System;
 namespace Paintdrops;
 
 public class Game1 : Game
@@ -75,7 +76,13 @@ public class Game1 : Game
             if (_customMouse.GetScreenPosition(_screen).HasValue)
             {
                 Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
-                Colour colour = new Colour(240, 132, 207);
+                //Colour colour = new Colour(240, 132, 207);
+                //create random colour
+                Random rnd = new Random();
+                int red = rnd.Next(1, 256);
+                int green = rnd.Next(1, 256);
+                int blue = rnd.Next(1, 256); 
+                Colour colour = new Colour(red, green, blue);
                 Circle r = new Circle(clickPosition.X, clickPosition.Y, 40, colour);
                 _shapeList.Add(r);
                 PaintDrop p = new PaintDrop(r);

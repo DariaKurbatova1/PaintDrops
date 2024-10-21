@@ -23,11 +23,12 @@ namespace PaintDropSimulation
         public void AddPaintDrop(IPaintDrop drop)
         {
             //List<IPaintDrop> marbled = new List<IPaintDrop>();
-            Drops.Add(drop);
+            
             foreach (PaintDrop item in Drops)
             {
                 item.Marble(drop);
             }
+            Drops.Add(drop);
         }
     }
 }
