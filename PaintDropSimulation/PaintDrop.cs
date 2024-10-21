@@ -9,7 +9,11 @@ namespace PaintDropSimulation
 {
     internal class PaintDrop : IPaintDrop
     {
-        public ICircle Circle { get; set; }
+        public ICircle Circle { get; }
+        public PaintDrop(ICircle circle)
+        {
+            Circle = circle;
+        }
 
         public void Marble(IPaintDrop other)
         {
