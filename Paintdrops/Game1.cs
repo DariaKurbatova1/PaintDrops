@@ -53,16 +53,13 @@ public class Game1 : Game
             Exit();
 
         _customMouse.Update();
-        //add rectangle
+        //clear shapes
         if (_customMouse.IsRightButtonClicked())
         {
             //check if click happened within bounds
             if (_customMouse.GetScreenPosition(_screen).HasValue)
             {
-                Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
-                Colour colour = new Colour(120, 120, 120);
-                ShapeLibrary.Rectangle r = new ShapeLibrary.Rectangle(clickPosition.X, clickPosition.Y, 40, 30, colour);
-                _shapeList.Add(r);
+                _shapeList.Clear();
 
             }
         }
@@ -76,16 +73,6 @@ public class Game1 : Game
                 Colour colour = new Colour(240, 132, 207);
                 Circle r = new Circle(clickPosition.X, clickPosition.Y, 40, colour);
                 _shapeList.Add(r);
-
-            }
-        }
-        //clear shapes
-        if (_customMouse.IsMiddleButtonClicked())
-        {
-            //check if click happened within bounds
-            if (_customMouse.GetScreenPosition(_screen).HasValue)
-            {
-                _shapeList.Clear();
 
             }
         }
