@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ShapeLibrary;
 using System.Collections.Generic;
+using PaintDropSimulation;
+using System;
 namespace Paintdrops;
 
 public class Game1 : Game
@@ -18,7 +20,8 @@ public class Game1 : Game
     private MouseState _previousMouseState;
     private MouseState _currentMouseState;
     private List<IShape> _shapeList;
-
+    private PaintDropSimulation.Surface _surface;
+    //private List<IPaintDrop> _paintDropList;
 
 
     public Game1()
@@ -37,6 +40,8 @@ public class Game1 : Game
         RenderTarget2D renderTarget = new RenderTarget2D(GraphicsDevice, 640, 480);
         _screen = new Screen(GraphicsDevice, renderTarget);
         _customMouse = CustomMouse.Instance;
+        _surface = new Surface(640, 480);
+
 
         base.Initialize();
     }
@@ -53,16 +58,14 @@ public class Game1 : Game
             Exit();
 
         _customMouse.Update();
-        //add rectangle
+        //clear shapes
         if (_customMouse.IsRightButtonClicked())
         {
             //check if click happened within bounds
             if (_customMouse.GetScreenPosition(_screen).HasValue)
             {
-                Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
-                Colour colour = new Colour(120, 120, 120);
-                ShapeLibrary.Rectangle r = new ShapeLibrary.Rectangle(clickPosition.X, clickPosition.Y, 40, 30, colour);
-                _shapeList.Add(r);
+                _shapeList.Clear();
+                _surface.Drops.Clear();
 
             }
         }
@@ -73,19 +76,17 @@ public class Game1 : Game
             if (_customMouse.GetScreenPosition(_screen).HasValue)
             {
                 Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
-                Colour colour = new Colour(240, 132, 207);
+                //Colour colour = new Colour(240, 132, 207);
+                //create random colour
+                Random rnd = new Random();
+                int red = rnd.Next(1, 256);
+                int green = rnd.Next(1, 256);
+                int blue = rnd.Next(1, 256); 
+                Colour colour = new Colour(red, green, blue);
                 Circle r = new Circle(clickPosition.X, clickPosition.Y, 40, colour);
                 _shapeList.Add(r);
-
-            }
-        }
-        //clear shapes
-        if (_customMouse.IsMiddleButtonClicked())
-        {
-            //check if click happened within bounds
-            if (_customMouse.GetScreenPosition(_screen).HasValue)
-            {
-                _shapeList.Clear();
+                PaintDrop p = new PaintDrop(r);
+                _surface.AddPaintDrop(p);
 
             }
         }
@@ -101,11 +102,17 @@ public class Game1 : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
         _shapesRenderer.Begin();
 
-        foreach (IShape shape in _shapeList)
+        /*foreach (IShape shape in _shapeList)
         {
             _shapesRenderer.DrawShape(shape);
 
-        }
+        }*/
+           foreach (IPaintDrop drop in _surface.Drops)
+           {
+                _shapesRenderer.DrawShape(drop.Circle);
+
+           }
+        
 
         _shapesRenderer.End();
         _screen.UnSet();
