@@ -58,15 +58,7 @@ namespace ShapeLibrary
             }
             return new Vector(a.X / scalar, a.Y / scalar); 
         }
-        public static bool operator ==(Vector a, Vector b)
-        {
-            return (a.X == b.X) && (a.Y == b.Y);
-        }
-        public static bool operator !=(Vector a, Vector b)
-        {
-            if (a.X != b.X || a.Y != b.Y) {  return true; }
-            return false;
-        }
+        
         public override String ToString()
         {
             return "("+X+", "+Y+")";
