@@ -11,6 +11,16 @@ namespace ShapeLibraryTest
     public class VectorTest
     {
         [TestMethod]
+        public void ConstructorTest()
+        {
+            Vector vector1 = new Vector(1, 2);
+            Assert.AreEqual(vector1.X, 1);
+            Assert.AreEqual(vector1.Y, 2);
+            Vector vector2 = new Vector(vector1);
+            Assert.AreEqual(vector2.X, vector1.X);
+            Assert.AreEqual(vector2.Y, vector1.Y);
+        }
+        [TestMethod]
         public void addVectorTest()
         {
             var v1 = new Vector(2, 3);
