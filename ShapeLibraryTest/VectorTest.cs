@@ -50,6 +50,15 @@ namespace ShapeLibraryTest
             Assert.AreEqual(6, result.Y);
         }
         [TestMethod]
+        public void MultiplyVectorTestReverseOrder()
+        {
+            var v1 = new Vector(2, 3);
+            var result = v1 * 2;
+
+            Assert.AreEqual(4, result.X);
+            Assert.AreEqual(6, result.Y);
+        }
+        [TestMethod]
         public void DivideVectorTest()
         {
             var v1 = new Vector(2, 6);
@@ -57,6 +66,15 @@ namespace ShapeLibraryTest
 
             Assert.AreEqual(1, result.X);
             Assert.AreEqual(3, result.Y);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException),
+        "Division by 0 is not allowed")]
+        public void DivisionByZeroException()
+        {
+            var v1 = new Vector(2, 6);
+            var result = v1 / 0;
+
         }
         [TestMethod]
         public void EqualsTest()
