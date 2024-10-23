@@ -78,14 +78,14 @@ namespace ShapeLibraryTest
         public void MagnitudeTest()
         {
             var v1 = new Vector(3, 4);
-            double result = Vector.magnitude(v1);
+            double result = Vector.Magnitude(v1);
             Assert.AreEqual(5, result);
         }
         [TestMethod]
         public void NormalizeTest()
         {
             var v1 = new Vector(3, 4);
-            double mag = Vector.magnitude(v1);
+            double mag = Vector.Magnitude(v1);
             var result = v1 / (float)mag;
             var expected = (new Vector((float)0.6, (float)0.8));
             Assert.AreEqual(expected, result);
