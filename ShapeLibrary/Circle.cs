@@ -12,9 +12,14 @@ namespace ShapeLibrary
         private Vector _center;
         private float _radius;
         private Colour _colour;
+        
 
         public Circle(float x, float y, float radius, Colour colour)
         {
+            if (radius <= 0)
+            {
+                throw new ArgumentException("Radius must be a positive value bigger than 0");
+            }
             _center = new Vector(x, y);
             _radius = radius;
             _colour = colour;

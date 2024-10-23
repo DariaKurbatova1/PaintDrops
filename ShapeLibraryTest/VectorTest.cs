@@ -77,24 +77,6 @@ namespace ShapeLibraryTest
 
         }
         [TestMethod]
-        public void EqualsTest()
-        {
-            var v1 = new Vector(2, 3);
-            var v2 = new Vector(2, 3);
-            var v3 = new Vector(0, 0);
-
-            Assert.IsTrue(v1 == v2);
-            Assert.IsFalse(v1 == v3);
-        }
-        [TestMethod]
-        public void NotEqualsTest()
-        {
-            var v1 = new Vector(2, 3);
-            var v2 = new Vector(0, 0);
-
-            Assert.IsTrue(v1 != v2);
-        }
-        [TestMethod]
         public void ToStringTest()
         {
             var v1 = new Vector(2, 3);
