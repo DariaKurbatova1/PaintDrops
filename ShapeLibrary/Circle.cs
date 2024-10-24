@@ -12,7 +12,7 @@ namespace ShapeLibrary
         public Vector Center { get; }
         public float Radius { get; }
         public Colour Colour { get; }
-
+        private Vector[] _vertices;
 
         public Circle(float x, float y, float radius, Colour colour)
         {
@@ -25,9 +25,19 @@ namespace ShapeLibrary
             Colour = colour;
         }
 
-        public Vector[] Vertices => calculateVertices();
+        public Vector[] Vertices
+        {
+            get
+            {
+                if (_vertices == null)
+                {
+                    _vertices = CalculateVertices();
+                }
+                return _vertices;
+            }
+        }
 
-        private Vector[] calculateVertices()
+        private Vector[] CalculateVertices()
         {
             const float PI = (float)Math.PI;
             //preset number of points
