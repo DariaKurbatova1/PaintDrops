@@ -83,7 +83,7 @@ public class Game1 : Game
                 int green = rnd.Next(1, 256);
                 int blue = rnd.Next(1, 256); 
                 Colour colour = new Colour(red, green, blue);
-                Circle r = new Circle(clickPosition.X, clickPosition.Y, 40, colour);
+                Circle r = (Circle)ShapeFactory.CreateCircle(clickPosition.X, clickPosition.Y, 40, colour);
                 _shapeList.Add(r);
                 PaintDrop p = new PaintDrop(r);
                 _surface.AddPaintDrop(p);
