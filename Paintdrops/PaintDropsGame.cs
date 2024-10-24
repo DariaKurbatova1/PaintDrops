@@ -10,7 +10,7 @@ using PaintDropSimulation;
 using System;
 namespace Paintdrops;
 
-public class Game1 : Game
+public class PaintDropsGame : Game
 {
     private GraphicsDeviceManager _graphics;
     //private SpriteBatch _spriteBatch;
@@ -21,10 +21,9 @@ public class Game1 : Game
     private MouseState _currentMouseState;
     private List<IShape> _shapeList;
     private PaintDropSimulation.Surface _surface;
-    //private List<IPaintDrop> _paintDropList;
 
 
-    public Game1()
+    public PaintDropsGame()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
@@ -76,7 +75,6 @@ public class Game1 : Game
             if (_customMouse.GetScreenPosition(_screen).HasValue)
             {
                 Vector2 clickPosition = (Vector2)_customMouse.GetScreenPosition(_screen);
-                //Colour colour = new Colour(240, 132, 207);
                 //create random colour
                 Random rnd = new Random();
                 int red = rnd.Next(1, 256);
@@ -101,12 +99,6 @@ public class Game1 : Game
         _screen.Set();
         GraphicsDevice.Clear(Color.CornflowerBlue);
         _shapesRenderer.Begin();
-
-        /*foreach (IShape shape in _shapeList)
-        {
-            _shapesRenderer.DrawShape(shape);
-
-        }*/
            foreach (IPaintDrop drop in _surface.Drops)
            {
                 _shapesRenderer.DrawShape(drop.Circle);
@@ -119,11 +111,6 @@ public class Game1 : Game
 
         SpritesRenderer renderer = new SpritesRenderer(GraphicsDevice);
         _screen.Present(renderer);
-
-
-
-
-
 
         base.Draw(gameTime);
     }
