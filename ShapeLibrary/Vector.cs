@@ -25,7 +25,12 @@ namespace ShapeLibrary
         /// </summary>
         public static double Magnitude(Vector v)
         {
-            return Math.Sqrt((v.X * v.X) + (v.Y * v.Y));
+            double magnitude = Math.Sqrt((v.X * v.X) + (v.Y * v.Y));
+            if (magnitude == 0)
+            {
+                throw new ArgumentException("Magnitude cannot be zero.");
+            }
+            return magnitude;
         }
         /// <summary>
         /// Returns the normalized version of the vector
