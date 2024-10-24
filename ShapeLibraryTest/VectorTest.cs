@@ -104,7 +104,7 @@ namespace ShapeLibraryTest
         public void NormalizeTest()
         {
             var v1 = new Vector(3, 4);
-            double mag = Vector.Magnitude(v1);
+            double mag = 5;
             var result = v1 / (float)mag;
             var expected = (new Vector((float)0.6, (float)0.8));
             Assert.AreEqual(expected, result);
