@@ -59,6 +59,15 @@ namespace ShapeLibraryTest
             Assert.AreEqual(6, result.Y);
         }
         [TestMethod]
+        public void MultiplyVectorWithFloatTest()
+        {
+            var v1 = new Vector(2.5f, 3.5f);
+            var result = 2.0f * v1;
+
+            Assert.AreEqual(5.0f, result.X);
+            Assert.AreEqual(7.0f, result.Y);
+        }
+        [TestMethod]
         public void DivideVectorTest()
         {
             var v1 = new Vector(2, 6);
