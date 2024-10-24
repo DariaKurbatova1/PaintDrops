@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+[assembly: InternalsVisibleTo("PaintDropSimulation")]
+[assembly: InternalsVisibleTo("ShapeLibraryTest")]
+[assembly: InternalsVisibleTo("PaintDrop")]
+[assembly: InternalsVisibleTo("DrawingLibrary")]
 namespace ShapeLibrary
 {
-    public class Circle : ICircle
+
+    internal class Circle : ICircle
     {
         public Vector Center { get; }
         public float Radius { get; }
