@@ -21,7 +21,15 @@ namespace ShapeLibraryTest
             Assert.AreEqual(10, circle.Radius);
             Assert.AreEqual(colour, circle.Colour);
         }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException),
+        "Radius must be a positive value bigger than 0")]
+        public void RadiusIsZeroException()
+        {
+            Colour colour = new Colour(122, 122, 122);
+            Circle circle = new Circle(0, 0, 0, colour);
 
+        }
         [TestMethod]
         public void CalculateVerticesTest()
         {

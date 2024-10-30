@@ -23,16 +23,21 @@ namespace ShapeLibrary
         /// <summary>
         /// Returns a double representing the magnitude of the vector
         /// </summary>
-        public static double magnitude(Vector v)
+        public static double Magnitude(Vector v)
         {
-            return Math.Sqrt((v.X * v.X) + (v.Y * v.Y));
+            double magnitude = Math.Sqrt((v.X * v.X) + (v.Y * v.Y));
+            if (magnitude == 0)
+            {
+                throw new ArgumentException("Magnitude cannot be zero.");
+            }
+            return magnitude;
         }
         /// <summary>
         /// Returns the normalized version of the vector
         /// </summary>
-        public static Vector normalize(Vector v)
+        public static Vector Normalize(Vector v)
         {
-            return new Vector((float)(v.X / magnitude(v)), (float)(v.Y / magnitude(v)));
+            return new Vector((float)(v.X / Magnitude(v)), (float)(v.Y / Magnitude(v)));
         }
         public static Vector operator +(Vector a, Vector b)
         {
@@ -46,19 +51,19 @@ namespace ShapeLibrary
         {
             return new Vector(scalar *  a.X, scalar * a.Y);
         }
+        public static Vector operator *(Vector a, float scalar)
+        {
+            return new Vector(scalar * a.X, scalar * a.Y);
+        }
         public static Vector operator /(Vector a, float scalar)
         {
+            if (scalar == 0)
+            {
+                throw new ArgumentException("Division by 0 is not allowed");
+            }
             return new Vector(a.X / scalar, a.Y / scalar); 
         }
-        public static bool operator ==(Vector a, Vector b)
-        {
-            return (a.X == b.X) && (a.Y == b.Y);
-        }
-        public static bool operator !=(Vector a, Vector b)
-        {
-            if (a.X != b.X || a.Y != b.Y) {  return true; }
-            return false;
-        }
+        
         public override String ToString()
         {
             return "("+X+", "+Y+")";

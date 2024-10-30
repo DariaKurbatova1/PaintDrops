@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +9,13 @@ namespace ShapeLibrary
 {
     public static class ShapeFactory
     {
-        public static ICircle CreateCircle()
+        public static ICircle CreateCircle(float x, float y, float radius, Colour colour)
         {
-            Colour colour = new Colour(120, 120, 120);
-            return new Circle(4, 4, 2, colour);
+            return new Circle(x, y, radius, colour);
         }
-        public static IRectangle CreateRectangle()
+        public static IRectangle CreateRectangle(float x, float y, float width, float height, Colour colour)
         {
-            Colour colour = new Colour(120, 120, 120);
-            return new Rectangle(2, 2, 4, 3, colour);
+            return new Rectangle(x, y, width, height, colour);
         }
     }
 }

@@ -11,6 +11,16 @@ namespace ShapeLibraryTest
     public class VectorTest
     {
         [TestMethod]
+        public void ConstructorTest()
+        {
+            Vector vector1 = new Vector(1, 2);
+            Assert.AreEqual(vector1.X, 1);
+            Assert.AreEqual(vector1.Y, 2);
+            Vector vector2 = new Vector(vector1);
+            Assert.AreEqual(vector2.X, vector1.X);
+            Assert.AreEqual(vector2.Y, vector1.Y);
+        }
+        [TestMethod]
         public void addVectorTest()
         {
             var v1 = new Vector(2, 3);
@@ -40,6 +50,24 @@ namespace ShapeLibraryTest
             Assert.AreEqual(6, result.Y);
         }
         [TestMethod]
+        public void MultiplyVectorTestReverseOrder()
+        {
+            var v1 = new Vector(2, 3);
+            var result = v1 * 2;
+
+            Assert.AreEqual(4, result.X);
+            Assert.AreEqual(6, result.Y);
+        }
+        [TestMethod]
+        public void MultiplyVectorWithFloatTest()
+        {
+            var v1 = new Vector(2.5f, 3.5f);
+            var result = 2.0f * v1;
+
+            Assert.AreEqual(5.0f, result.X);
+            Assert.AreEqual(7.0f, result.Y);
+        }
+        [TestMethod]
         public void DivideVectorTest()
         {
             var v1 = new Vector(2, 6);
@@ -49,22 +77,13 @@ namespace ShapeLibraryTest
             Assert.AreEqual(3, result.Y);
         }
         [TestMethod]
-        public void EqualsTest()
+        [ExpectedException(typeof(ArgumentException),
+        "Division by 0 is not allowed")]
+        public void DivisionByZeroException()
         {
-            var v1 = new Vector(2, 3);
-            var v2 = new Vector(2, 3);
-            var v3 = new Vector(0, 0);
+            var v1 = new Vector(2, 6);
+            var result = v1 / 0;
 
-            Assert.IsTrue(v1 == v2);
-            Assert.IsFalse(v1 == v3);
-        }
-        [TestMethod]
-        public void NotEqualsTest()
-        {
-            var v1 = new Vector(2, 3);
-            var v2 = new Vector(0, 0);
-
-            Assert.IsTrue(v1 != v2);
         }
         [TestMethod]
         public void ToStringTest()
@@ -78,14 +97,14 @@ namespace ShapeLibraryTest
         public void MagnitudeTest()
         {
             var v1 = new Vector(3, 4);
-            double result = Vector.magnitude(v1);
+            double result = Vector.Magnitude(v1);
             Assert.AreEqual(5, result);
         }
         [TestMethod]
         public void NormalizeTest()
         {
             var v1 = new Vector(3, 4);
-            double mag = Vector.magnitude(v1);
+            double mag = 5;
             var result = v1 / (float)mag;
             var expected = (new Vector((float)0.6, (float)0.8));
             Assert.AreEqual(expected, result);

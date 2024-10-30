@@ -24,7 +24,7 @@ namespace PaintDropSimulation
             foreach (var vertice in Circle.Vertices)
             {
                 var squareRadius = (otherRadius * otherRadius);
-                var magnitude = Vector.magnitude(vertice - otherCenter);
+                var magnitude = Vector.Magnitude(vertice - otherCenter);
                 var squareRoot = Math.Sqrt(1 + (squareRadius / (magnitude * magnitude)));
                 var newVertice = otherCenter + ((float)squareRoot * (vertice - otherCenter));
                 Circle.Vertices[index] = newVertice;

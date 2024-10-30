@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+[assembly: InternalsVisibleTo("PaintDrop")]
 namespace PaintDropSimulation
 {
-    public class PaintDropSimulation
+    
+    internal class PaintDropSimulation
     {
         public PaintDropSimulation() {
 
