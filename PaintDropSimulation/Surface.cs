@@ -23,7 +23,8 @@ namespace PaintDropSimulation
         public List<IPaintDrop> Drops { get; }
         public void GeneratePaintDropPattern(float radius, Colour colour)
         {
-
+            PatternGeneration.Invoke(this);
+            AddPaintDrop(new PaintDrop(new Circle(0, 0, radius, colour)));
         }
 
         public void AddPaintDrop(IPaintDrop drop)
