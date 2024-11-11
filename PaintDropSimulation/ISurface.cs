@@ -10,6 +10,14 @@ namespace PaintDropSimulation
     public interface ISurface
     {
         /// <summary>
+        /// Delegate
+        /// </summary>
+        public delegate Vector? CalculatePatternPoint(ISurface surface);
+        /// <summary>
+        /// Event
+        /// </summary>
+        public event CalculatePatternPoint PatternGeneration;
+        /// <summary>
         /// Width of the surface
         /// </summary>
         int Width { get; }

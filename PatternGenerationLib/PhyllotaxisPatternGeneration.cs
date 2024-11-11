@@ -17,16 +17,20 @@ namespace PatternGenerationLib
         public int Index = 0;
         public Vector? CalculatePatternPoint(ISurface surface)
         {
-            //get center of surface
-            int xs = surface.Width / 2;
-            int ys = surface.Height / 2;  
-            //calculate one point
-            double ri = C * Math.Sqrt(Index);
-            double theta_i = Index * A;
-            double xi = xs * ri*Math.Cos(theta_i);
-            double yi = ys + ri*Math.Sin(theta_i);
-            increaseIndex();
-            return new Vector((float)xi, (float)yi);
+            if(Index < N)
+            {
+                //get center of surface
+                int xs = surface.Width / 2;
+                int ys = surface.Height / 2;
+                //calculate one point
+                double ri = C * Math.Sqrt(Index);
+                double theta_i = Index * A;
+                double xi = xs * ri * Math.Cos(theta_i);
+                double yi = ys + ri * Math.Sin(theta_i);
+                increaseIndex();
+                return new Vector((float)xi, (float)yi);
+            }
+            return null;
         }
         public void increaseIndex() { Index++; }
     }
