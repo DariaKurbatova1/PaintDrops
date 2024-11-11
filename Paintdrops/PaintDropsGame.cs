@@ -58,8 +58,9 @@ public class PaintDropsGame : Game
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
-
-        if (startGenerating) { _surface.GeneratePaintDropPattern(10, new Colour(2, 2, 2)); }
+        //create random colour
+        Random rand = new Random();
+        if (startGenerating) { _surface.GeneratePaintDropPattern(10, new Colour(rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256))); }
         _customKeyboard.Update();
         if (_customKeyboard.IsKeyClicked(Keys.M)){
             startGenerating = true;
