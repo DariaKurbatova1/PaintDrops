@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShapeLibraryTest", "ShapeLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaintDropSimulation", "PaintDropSimulation\PaintDropSimulation.csproj", "{E2A7CBAA-5573-4CA0-91C8-6082E1EC796C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatternGenerationLib", "PatternGenerationLib\PatternGenerationLib.csproj", "{61E371BF-2525-4183-ACBE-570F349AC4F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatterGenerationTest", "PatterGenerationTest\PatterGenerationTest.csproj", "{095EF453-DC44-49C7-BBE3-EA3476702115}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{E2A7CBAA-5573-4CA0-91C8-6082E1EC796C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2A7CBAA-5573-4CA0-91C8-6082E1EC796C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2A7CBAA-5573-4CA0-91C8-6082E1EC796C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61E371BF-2525-4183-ACBE-570F349AC4F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E371BF-2525-4183-ACBE-570F349AC4F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E371BF-2525-4183-ACBE-570F349AC4F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E371BF-2525-4183-ACBE-570F349AC4F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{095EF453-DC44-49C7-BBE3-EA3476702115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{095EF453-DC44-49C7-BBE3-EA3476702115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{095EF453-DC44-49C7-BBE3-EA3476702115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{095EF453-DC44-49C7-BBE3-EA3476702115}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
