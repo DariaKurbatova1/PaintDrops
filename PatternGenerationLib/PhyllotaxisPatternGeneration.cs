@@ -13,7 +13,7 @@ namespace PatternGenerationLib
         public const double GOLDEN_ANGLE = 137.5;
         public double A = Math.PI / 180 * GOLDEN_ANGLE;
         public int C = 10; //scaling factor c
-        public int N = 100; //number of points to place
+        public int N = 1000; //number of points to place
         public int Index = 0;
         public Vector? CalculatePatternPoint(ISurface surface)
         {

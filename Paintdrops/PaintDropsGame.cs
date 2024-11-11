@@ -60,13 +60,13 @@ public class PaintDropsGame : Game
             Exit();
         //create random colour
         Random rand = new Random();
-        if (startGenerating) { _surface.GeneratePaintDropPattern(10, new Colour(rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256))); }
+        if (startGenerating) { _surface.GeneratePaintDropPattern(7, new Colour(rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256))); }
         _customKeyboard.Update();
         if (_customKeyboard.IsKeyClicked(Keys.M)){
             startGenerating = true;
         }
         _customKeyboard.Update();
-        if (_customKeyboard.IsKeyClicked(Keys.E))
+        if (_customKeyboard.IsKeyClicked(Keys.A))
         {
             startGenerating = false;
         }
