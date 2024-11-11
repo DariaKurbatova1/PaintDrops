@@ -7,16 +7,21 @@ using System.Threading.Tasks;
 
 namespace PaintDropSimulation
 {
+    /// <summary>
+    /// Delegate
+    /// </summary>
+    public delegate Vector? CalculatePatternPoint(ISurface surface);
     public interface ISurface
     {
-        /// <summary>
-        /// Delegate
-        /// </summary>
-        public delegate Vector? CalculatePatternPoint(ISurface surface);
+        
         /// <summary>
         /// Event
         /// </summary>
-        public event CalculatePatternPoint PatternGeneration;
+        event CalculatePatternPoint PatternGeneration;
+        /// <summary>
+        /// Method that will invoke PatternGeneration event and add new paint drop to the surface
+        /// </summary>
+        void GeneratePaintDropPattern(float radius, Colour colour);
         /// <summary>
         /// Width of the surface
         /// </summary>
