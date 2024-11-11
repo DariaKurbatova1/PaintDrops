@@ -15,7 +15,7 @@ namespace PatternGenerationLib
         public int C = 10; //scaling factor c
         public int N = 100; //number of points to place
         public int Index = 0;
-        public Vector? CalculatePatternPoint(ISurface surface)
+        public Vector CalculatePatternPoint(ISurface surface)
         {
             if(Index < N)
             {
