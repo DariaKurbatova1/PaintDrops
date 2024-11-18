@@ -13,6 +13,7 @@ namespace PaintDropSimulation
         /// Represents a circle to be marbled
         /// </summary>
         ICircle Circle { get; }
+        public IRectangle BoundingBox { get; }
 
         /// <summary>
         /// Performs the marbling algorithm
