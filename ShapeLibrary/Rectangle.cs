@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,6 +47,15 @@ namespace ShapeLibrary
                 new Vector(_x + _width, _y + _height),
                 new Vector(_x, _y + _height)
             };
+        }
+        public bool Intersect(IRectangle rectangle)
+        {
+            double minX = Math.Min(rectangle.X, _x);
+            double minY = Math.Min(rectangle.Y, _y);
+            double maxX = Math.Max(rectangle.X + rectangle.Width, _x + _width);
+            double maxY = Math.Max(rectangle.Y + rectangle.Height, _y + _height);
+            if (minX < maxX && minY < maxY) return true;
+            return false;
         }
     }
 }
