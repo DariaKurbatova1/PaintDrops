@@ -8,6 +8,8 @@ using ShapeLibrary;
 using System.Collections.Generic;
 using PaintDropSimulation;
 using System;
+using PatternGenerationLib;
+using System.Drawing;
 namespace Paintdrops;
 
 public class PaintDropsGame : Game
@@ -16,8 +18,11 @@ public class PaintDropsGame : Game
     private IShapesRenderer _shapesRenderer;
     private IScreen _screen;
     private ICustomMouse _customMouse;
+    private ICustomKeyboard _customKeyboard;
     private List<IShape> _shapeList;
     private PaintDropSimulation.Surface _surface;
+    private PhyllotaxisPatternGeneration _patternGeneration;
+    private bool startGenerating = false;
 
 
     public PaintDropsGame()
@@ -34,8 +39,11 @@ public class PaintDropsGame : Game
         RenderTarget2D renderTarget = new RenderTarget2D(GraphicsDevice, 640, 480);
         _screen = new Screen(GraphicsDevice, renderTarget);
         _customMouse = CustomMouse.Instance;
+        _customKeyboard = CustomKeyboard.Instance;
         _surface = new Surface(640, 480);
         _shapesRenderer = new ShapesRenderer(GraphicsDevice);
+        _patternGeneration = new PhyllotaxisPatternGeneration();
+        _surface.PatternGeneration += _patternGeneration.CalculatePatternPoint;
 
         base.Initialize();
     }
@@ -50,7 +58,18 @@ public class PaintDropsGame : Game
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
-
+        //create random colour
+        Random rand = new Random();
+        if (startGenerating) { _surface.GeneratePaintDropPattern(7, new Colour(rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256))); }
+        _customKeyboard.Update();
+        if (_customKeyboard.IsKeyClicked(Keys.M)){
+            startGenerating = true;
+        }
+        _customKeyboard.Update();
+        if (_customKeyboard.IsKeyClicked(Keys.A))
+        {
+            startGenerating = false;
+        }
         _customMouse.Update();
         //clear shapes
         if (_customMouse.IsRightButtonClicked())
@@ -93,7 +112,7 @@ public class PaintDropsGame : Game
     {
         
         _screen.Set();
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(Microsoft.Xna.Framework.Color.CornflowerBlue);
         _shapesRenderer.Begin();
            foreach (IPaintDrop drop in _surface.Drops)
            {
