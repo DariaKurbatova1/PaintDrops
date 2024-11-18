@@ -56,8 +56,8 @@ namespace ShapeLibrary
             double minY = Math.Min(rectangle.Y, Y);
             double maxX = Math.Max(rectangle.X + rectangle.Width, X + _width);
             double maxY = Math.Max(rectangle.Y + rectangle.Height, Y + _height);
-            if (minX < maxX && minY < maxY) return true;
-            return false;
+            if (minX < maxX && minY < maxY) return false;
+            return true;
         }
     }
 }
