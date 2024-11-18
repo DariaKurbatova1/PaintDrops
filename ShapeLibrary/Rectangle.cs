@@ -37,6 +37,7 @@ namespace ShapeLibrary
         public Vector[] Vertices => CalculateVertices();
 
         public Colour Colour =>  _colour;
+        
 
         private Vector[] CalculateVertices()
         {

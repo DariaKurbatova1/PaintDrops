@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace PaintDropSimulation
 {
     public class PaintDrop : IPaintDrop
     {
         public ICircle Circle { get; set; }
+        public IRectangle BoudingBox { get;  private set; }
         public PaintDrop(ICircle circle)
         {
             Circle = circle;
+            BoudingBox = CalculateBoundingBox();
         }
 
         public void Marble(IPaintDrop other)
@@ -30,6 +33,25 @@ namespace PaintDropSimulation
                 Circle.Vertices[index] = newVertice;
                 index++;
             }
+            //reset bounding box
+            BoudingBox = CalculateBoundingBox();
+        }
+        public IRectangle CalculateBoundingBox()
+        {
+            //verticles.min(value => vlaue.x)
+            //top left corner
+            float minX = Circle.Vertices.Min(value => value.X);
+            float minY = Circle.Vertices.Min(value => value.Y);
+
+            float maxX = Circle.Vertices.Max(value => value.X);
+            float maxY = Circle.Vertices.Max(value => value.Y);
+
+            float width = maxX - minX;
+            float height = maxY - minY;
+
+            Colour colour = new Colour(4, 4, 4);
+            return new Rectangle(minX, minY, width, height, colour);
+
         }
 
     }
