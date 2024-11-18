@@ -11,11 +11,11 @@ namespace PaintDropSimulation
     public class PaintDrop : IPaintDrop
     {
         public ICircle Circle { get; set; }
-        public IRectangle BoudingBox { get;  private set; }
+        public IRectangle BoundingBox { get;  private set; }
         public PaintDrop(ICircle circle)
         {
             Circle = circle;
-            BoudingBox = CalculateBoundingBox();
+            BoundingBox = CalculateBoundingBox();
         }
 
         public void Marble(IPaintDrop other)
@@ -34,7 +34,7 @@ namespace PaintDropSimulation
                 index++;
             }
             //reset bounding box
-            BoudingBox = CalculateBoundingBox();
+            BoundingBox = CalculateBoundingBox();
         }
         public IRectangle CalculateBoundingBox()
         {

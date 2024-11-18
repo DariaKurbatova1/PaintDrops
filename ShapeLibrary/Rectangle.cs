@@ -51,10 +51,11 @@ namespace ShapeLibrary
         }
         public bool Intersect(IRectangle rectangle)
         {
-            double minX = Math.Min(rectangle.X, _x);
-            double minY = Math.Min(rectangle.Y, _y);
-            double maxX = Math.Max(rectangle.X + rectangle.Width, _x + _width);
-            double maxY = Math.Max(rectangle.Y + rectangle.Height, _y + _height);
+            rectangle = new Rectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, rectangle.Colour);
+            double minX = Math.Min(rectangle.X, X);
+            double minY = Math.Min(rectangle.Y, Y);
+            double maxX = Math.Max(rectangle.X + rectangle.Width, X + _width);
+            double maxY = Math.Max(rectangle.Y + rectangle.Height, Y + _height);
             if (minX < maxX && minY < maxY) return true;
             return false;
         }
