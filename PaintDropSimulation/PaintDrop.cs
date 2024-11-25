@@ -23,18 +23,28 @@ namespace PaintDropSimulation
             //apply the algorithm to all vertices
             var otherCenter = other.Circle.Center;
             var otherRadius = other.Circle.Radius;
+
+            var squareRadius = (otherRadius * otherRadius);
             int index = 0;
             foreach (var vertice in Circle.Vertices)
             {
-                var squareRadius = (otherRadius * otherRadius);
                 var magnitude = Vector.Magnitude(vertice - otherCenter);
                 var squareRoot = Math.Sqrt(1 + (squareRadius / (magnitude * magnitude)));
                 var newVertice = otherCenter + ((float)squareRoot * (vertice - otherCenter));
                 Circle.Vertices[index] = newVertice;
                 index++;
             }
+            /*Parallel.Foreach(0, Circle.Vertices.Length, i =>
+            {
+                var squareRadius = (otherRadius * otherRadius);
+                var magnitude = Vector.Magnitude(Circle.Vertices[i] - otherCenter);
+                var squareRoot = Math.Sqrt(1 + (squareRadius / (magnitude * magnitude)));
+                var newVertice = otherCenter + ((float)squareRoot * (Circle.Vertices[i] - otherCenter));
+                Circle.Vertices[index] = newVertice;
+            });*/
             //reset bounding box
             BoundingBox = CalculateBoundingBox();
+            
         }
         public IRectangle CalculateBoundingBox()
         {

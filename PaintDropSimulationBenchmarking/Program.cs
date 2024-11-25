@@ -46,12 +46,6 @@ internal class Program
         Console.WriteLine($"Time taken for 2000 drops: {watch.ElapsedMilliseconds}");
         Console.ReadKey();
 
-        watch.Restart();
-        surface = new Surface(1800, 1800);
-        AddDrops(surface, 2500);
-        watch.Stop();
-        Console.WriteLine($"Time taken for 2500 drops: {watch.ElapsedMilliseconds}");
-        Console.ReadKey();
 
 
     }
