@@ -1,12 +1,28 @@
 ﻿
 using System.Diagnostics;
-
+using ShapeLibrary;
+using PaintDropSimulation;
 internal class Program
 {
+    public static void AddDrops(ISurface surface, int numDrops)
+    {
+        for (int i = 0; i < numDrops; i++)
+        {
+            ICircle c = ShapeFactory.CreateCircle(5, 5, 5, new Colour(3, 3, 3));
+            IPaintDrop drop = new PaintDrop(c);
+            surface.AddPaintDrop(drop);
+        }
+    }
     private static void Main(string[] args)
     {
-        Console.WriteLine("Lecture 12 demo - Performance analysis");
+        Console.WriteLine("PaintDropsApp - Performance analysis");
+
         var watch = new Stopwatch();
+        watch.Start();
+        ISurface surface = new Surface(489, 480);
+        AddDrops(surface, 500);
+        watch.Stop();
+        Console.WriteLine($"Time taken for 500 drops: {watch.ElapsedMilliseconds}");
         //for (int i = 10000; i < 500000; i += 1000)
         //{
         //    watch.Restart();
@@ -18,7 +34,7 @@ internal class Program
         //    Console.ReadKey();
         //}
 
-        Parallel.For(0, 100, i =>
+        /*Parallel.For(0, 100, i =>
         {
             watch.Restart();
             watch.Start();
@@ -26,11 +42,11 @@ internal class Program
             watch.Stop();
             Console.WriteLine($"Time taken for {i} : {watch.ElapsedMilliseconds}");
         });
-
+*/
 
     }
     //Demo 1 - To benchmark a simple for
-    private static double[] Create1DArray(int n)
+    /*private static double[] Create1DArray(int n)
     {
         double[] array = new double[n];
         Random r = new Random();
@@ -75,5 +91,5 @@ internal class Program
             total += i;
         }
         return total;
-    }
+    }*/
 }
