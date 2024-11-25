@@ -34,14 +34,6 @@ namespace PaintDropSimulation
                 Circle.Vertices[index] = newVertice;
                 index++;
             }
-            /*Parallel.Foreach(0, Circle.Vertices.Length, i =>
-            {
-                var squareRadius = (otherRadius * otherRadius);
-                var magnitude = Vector.Magnitude(Circle.Vertices[i] - otherCenter);
-                var squareRoot = Math.Sqrt(1 + (squareRadius / (magnitude * magnitude)));
-                var newVertice = otherCenter + ((float)squareRoot * (Circle.Vertices[i] - otherCenter));
-                Circle.Vertices[index] = newVertice;
-            });*/
             //reset bounding box
             BoundingBox = CalculateBoundingBox();
             

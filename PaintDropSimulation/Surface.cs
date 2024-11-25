@@ -51,16 +51,16 @@ namespace PaintDropSimulation
                 {
                     Drops.Remove(item);
                 }
-            }*/
+            }*//*
             Parallel.For(0, Drops.Count, i =>
             {
-                Drops[i].Marble(Drops[i]);
+                drop.Marble(Drops[i]);
 
-            });
+            });*/
 
             for (int i = 0; i < Drops.Count; i++)
             {
-
+                drop.Marble(Drops[i]);
                 if (Drops[i].BoundingBox.Intersect(surfaceBorder))
                 {
                     Drops.RemoveAt(i);
