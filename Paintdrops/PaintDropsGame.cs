@@ -22,7 +22,10 @@ public class PaintDropsGame : Game
     private List<IShape> _shapeList;
     private PaintDropSimulation.Surface _surface;
     private PhyllotaxisPatternGeneration _patternGeneration;
-    private bool startGenerating = false;
+    private NewPatternGeneration _newPatternGeneration;
+    private bool startGeneratingPhyllotaxis = false;
+    private bool startGeneratingOtherPattern = false;
+    private string PatternToGenerate;
 
 
     public PaintDropsGame()
@@ -43,7 +46,10 @@ public class PaintDropsGame : Game
         _surface = new Surface(640, 480);
         _shapesRenderer = new ShapesRenderer(GraphicsDevice);
         _patternGeneration = new PhyllotaxisPatternGeneration();
+        _newPatternGeneration = new NewPatternGeneration();
         _surface.PatternGeneration += _patternGeneration.CalculatePatternPoint;
+        _surface.PatternGeneration += _newPatternGeneration.CalculatePatternPoint;
+        PatternToGenerate = "otherPattern";
 
         base.Initialize();
     }
@@ -60,15 +66,43 @@ public class PaintDropsGame : Game
             Exit();
         //create random colour
         Random rand = new Random();
-        if (startGenerating) { _surface.GeneratePaintDropPattern(7, new Colour(rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256))); }
+        if (startGeneratingPhyllotaxis) { _surface.GeneratePaintDropPattern(7, new Colour(rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256))); }
+        if (startGeneratingOtherPattern) { _surface.GeneratePaintDropPattern(7, new Colour(rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256))); }
         _customKeyboard.Update();
         if (_customKeyboard.IsKeyClicked(Keys.M)){
-            startGenerating = true;
+            if (PatternToGenerate == "Phyllotaxis")
+            {
+                startGeneratingPhyllotaxis = true;
+            }
+            else
+            {
+                startGeneratingOtherPattern = true;
+            }
+            
         }
         _customKeyboard.Update();
         if (_customKeyboard.IsKeyClicked(Keys.A))
         {
-            startGenerating = false;
+            if (PatternToGenerate == "Phyllotaxis")
+            {
+                startGeneratingPhyllotaxis = false;
+            }
+            else
+            {
+                startGeneratingOtherPattern = false;
+            }
+        }
+        //change the generated pattern 
+        if (_customKeyboard.IsKeyClicked(Keys.P))
+        {
+            if (PatternToGenerate == "Phyllotaxis")
+            {
+                PatternToGenerate = "OtherPattern";
+            }
+            else
+            {
+                PatternToGenerate = "Phyllotaxis";
+            }
         }
         _customMouse.Update();
         //clear shapes
