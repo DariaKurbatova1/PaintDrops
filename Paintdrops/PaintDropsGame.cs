@@ -67,7 +67,7 @@ public class PaintDropsGame : Game
         //create random colour
         Random rand = new Random();
         if (startGeneratingPhyllotaxis) { _surface.GeneratePaintDropPattern(7, new Colour(rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256))); }
-        if (startGeneratingOtherPattern) { _surface.GeneratePaintDropPattern(7, new Colour(rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256))); }
+        if (startGeneratingOtherPattern) { _surface.GeneratePaintDropPattern(50, new Colour(rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256))); }
         _customKeyboard.Update();
         if (_customKeyboard.IsKeyClicked(Keys.M)){
             if (PatternToGenerate == "Phyllotaxis")
