@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PatternGenerationLib
 {
-    public class NewPatternGeneration : IPatternGenerator
+    public class HypnosisPattern : IPatternGenerator
     {
         public const double GOLDEN_ANGLE = 137.5;
         public double A = Math.PI / 180 * GOLDEN_ANGLE;

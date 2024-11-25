@@ -22,7 +22,7 @@ public class PaintDropsGame : Game
     private List<IShape> _shapeList;
     private PaintDropSimulation.Surface _surface;
     private PhyllotaxisPatternGeneration _patternGeneration;
-    private NewPatternGeneration _newPatternGeneration;
+    private HypnosisPattern _hypnosisPatternGeneration;
     private bool startGeneratingPhyllotaxis = false;
     private bool startGeneratingOtherPattern = false;
     private string PatternToGenerate;
@@ -46,9 +46,9 @@ public class PaintDropsGame : Game
         _surface = new Surface(640, 480);
         _shapesRenderer = new ShapesRenderer(GraphicsDevice);
         _patternGeneration = new PhyllotaxisPatternGeneration();
-        _newPatternGeneration = new NewPatternGeneration();
+        _hypnosisPatternGeneration = new HypnosisPattern();
         _surface.PatternGeneration += _patternGeneration.CalculatePatternPoint;
-        _surface.PatternGeneration += _newPatternGeneration.CalculatePatternPoint;
+        _surface.PatternGeneration += _hypnosisPatternGeneration.CalculatePatternPoint;
         PatternToGenerate = "otherPattern";
 
         base.Initialize();
