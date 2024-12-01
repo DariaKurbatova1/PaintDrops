@@ -21,8 +21,11 @@ public class PaintDropsGame : Game
     private ICustomKeyboard _customKeyboard;
     private List<IShape> _shapeList;
     private PaintDropSimulation.Surface _surface;
-    private PhyllotaxisPatternGeneration _patternGeneration;
-    private bool startGenerating = false;
+    private IPatternGenerator _patternGeneration;
+    private HypnosisPattern _hypnosisPatternGeneration;
+    private bool startGeneratingPhyllotaxis = false;
+    private bool startGeneratingOtherPattern = false;
+    private string PatternToGenerate;
 
 
     public PaintDropsGame()
@@ -44,6 +47,7 @@ public class PaintDropsGame : Game
         _shapesRenderer = new ShapesRenderer(GraphicsDevice);
         _patternGeneration = new PhyllotaxisPatternGeneration();
         _surface.PatternGeneration += _patternGeneration.CalculatePatternPoint;
+        PatternToGenerate = "otherPattern";
 
         base.Initialize();
     }
@@ -60,17 +64,40 @@ public class PaintDropsGame : Game
             Exit();
         //create random colour
         Random rand = new Random();
-        if (startGenerating) { _surface.GeneratePaintDropPattern(7, new Colour(rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256))); }
-        _customKeyboard.Update();
+        if (startGeneratingPhyllotaxis) { _surface.GeneratePaintDropPattern(7, new Colour(rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256))); }
         if (_customKeyboard.IsKeyClicked(Keys.M)){
-            startGenerating = true;
+            /*if (PatternToGenerate == "Phyllotaxis")
+            {
+                startGeneratingPhyllotaxis = true;
+            }
+            else
+            {
+                startGeneratingOtherPattern = true;
+            }*/
+            _surface.PatternGeneration -= _patternGeneration.CalculatePatternPoint;
+            _patternGeneration = new PhyllotaxisPatternGeneration();
+            _surface.PatternGeneration += _patternGeneration.CalculatePatternPoint;
+            startGeneratingPhyllotaxis = true;
+
         }
-        _customKeyboard.Update();
+       
         if (_customKeyboard.IsKeyClicked(Keys.A))
         {
-            startGenerating = false;
+            _surface.PatternGeneration -= _patternGeneration.CalculatePatternPoint;
+            _patternGeneration = new HypnosisPattern();
+            _surface.PatternGeneration += _patternGeneration.CalculatePatternPoint;
+            startGeneratingPhyllotaxis = true;
         }
-        _customMouse.Update();
+        //change the generated pattern 
+        if (_customKeyboard.IsKeyClicked(Keys.P))
+        {
+            _surface.PatternGeneration -= _patternGeneration.CalculatePatternPoint;
+            _patternGeneration = new HypnosisPattern();
+            _surface.PatternGeneration += _patternGeneration.CalculatePatternPoint;
+            startGeneratingPhyllotaxis = true;
+
+        }
+        
         //clear shapes
         if (_customMouse.IsRightButtonClicked())
         {
@@ -103,8 +130,8 @@ public class PaintDropsGame : Game
 
             }
         }
-
-
+        _customMouse.Update();
+        _customKeyboard.Update();
         base.Update(gameTime);
     }
 

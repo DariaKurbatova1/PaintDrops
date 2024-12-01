@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,6 +37,7 @@ namespace ShapeLibrary
         public Vector[] Vertices => CalculateVertices();
 
         public Colour Colour =>  _colour;
+        
 
         private Vector[] CalculateVertices()
         {
@@ -46,6 +48,16 @@ namespace ShapeLibrary
                 new Vector(_x + _width, _y + _height),
                 new Vector(_x, _y + _height)
             };
+        }
+        public bool Intersect(IRectangle rectangle)
+        {
+            rectangle = new Rectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, rectangle.Colour);
+            double minX = Math.Min(rectangle.X, X);
+            double minY = Math.Min(rectangle.Y, Y);
+            double maxX = Math.Max(rectangle.X + rectangle.Width, X + _width);
+            double maxY = Math.Max(rectangle.Y + rectangle.Height, Y + _height);
+            if (minX < maxX && minY < maxY) return false;
+            return true;
         }
     }
 }
